@@ -1,15 +1,15 @@
 ## RPM gradle plugin
-see [this issue](https://git..com/cpe/consolidateplatform/issues/63)
+
 ----------
 ### Version Configuration Plugin: *cpe.rpm.version-config*
 ##### Purpose
-Enforce [these naming/version conventions](https://git..com/cpe/consolidateplatform/issues/32):
+Enforce [these naming/version
 ```
-tgt-<rpmName>-<rpmVersion>-<rpmRelease>.<rpmArch>.rpm
+cld-<rpmName>-<rpmVersion>-<rpmRelease>.<rpmArch>.rpm
 ```
 #### Notes
 - These properties are inferred via:
-  - *rpmName*: ```project.name``` specified in ```settings.gradle``` file of the project that applied this plugin (e.g., [settings.gradle](settings.gradle)). *If this name is not prefixed with 'tgt-', that prefix will be added.*
+  - *rpmName*: ```project.name``` specified in ```settings.gradle``` file of the project that applied this plugin (e.g., [settings.gradle](settings.gradle)). *If this name is not prefixed with 'cld-', that prefix will be added.*
   - *rpmVersion*: ```project.version``` set by the [nebula-release-plugin](https://github.com/nebula-plugins/nebula-release-plugin)
   - *rpmRelease*: 'SNAPSHOT' if the nebula-release-plugin's ```snapshot``` task is called, otherwise defaults to '1'
   - *rpmArch*: ```yumArtifactBaseArch``` property set in the ```gradle.properties``` file of the project or defaults to 'x86_64'
@@ -34,7 +34,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.tgt.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 
@@ -47,7 +47,7 @@ repositories {
 ----------
 ### Publish Plugin: *cpe.rpm.publish*
 ##### Purpose
-Configure [defaults](src/main/groovy/com/tgt/cpe/rpm/PublishPluginConstants.groovy) for the jFrog artifactory plugin to publish the resulting RPM to the specified artifactory repository.
+Configure [defaults](src/main/groovy/com/cld/cpe/rpm/PublishPluginConstants.groovy) for the jFrog artifactory plugin to publish the resulting RPM to the specified artifactory repository.
 
 #### Notes
 - The cpe.rpm.publish plugin will automatically apply the cpe.rpm.version-config plugin to make sure that published artifact is properly named
@@ -63,7 +63,7 @@ Configure [defaults](src/main/groovy/com/tgt/cpe/rpm/PublishPluginConstants.groo
 
   yumArtifactoryPublishRepository = <insert-artifactory-publish-repo>
   ```
-- If the above properties are not set, the default settings from [PublishPluginConstants](src/main/groovy/com/tgt/cpe/rpm/PublishPluginConstants.groovy) will be used.
+- If the above properties are not set, the default settings from [PublishPluginConstants](src/main/groovy/com/cld/cpe/rpm/PublishPluginConstants.groovy) will be used.
 - These properties can be overridden if you use the following block in your ```build.gradle``` file:
 ```
   publishConfig {
@@ -87,7 +87,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.tgt.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 
@@ -115,7 +115,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.tgt.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 
@@ -134,7 +134,7 @@ downloadSourceConfig {
 
 ### Possible Future
 
-- [Jar packaging task](https://git..com/cpe/consolidateplatform/issues/76)
+
 - Enforce testing conventions
   - "set up" task to install RPM and configure before testing
   - "test" task that will enable more flexibility with how people choose to test the RPM but will be a common convention that Jenkins can use to run the tests
