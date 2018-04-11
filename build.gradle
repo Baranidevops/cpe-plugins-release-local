@@ -72,7 +72,7 @@ publishing {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "http://35.188.144.12//artifactory/cld-plugins-release-local/") {
+            repository(url: "http://35.188.144.12/artifactory/cld-plugins-release-local/") {
                 authentication(userName: "${artifactoryUser}", password: "${artifactoryPassword}")
             }
         }
