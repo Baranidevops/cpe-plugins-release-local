@@ -1,0 +1,80 @@
+buildscript {
+    ext {
+        groovyVersion = '2.4.4'
+        spockVersion = '1.0-groovy-2.4'
+        gradleGitVersion = '1.4.2'
+        nebulaExtraVersion = '3.1.0'
+        nebulaOspackageVersion= '3.5.0'
+        nebulaReleaseVersion = '4.0.1'
+        commonsLangVersion = '3.4'
+        jfrogArtifactoryVersion = '4.0.0'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'groovy'
+    id 'idea'
+    id 'eclipse'
+    id 'maven'
+    id 'java-gradle-plugin' //plugin development
+    id 'maven-publish'
+    id "com.jfrog.artifactory" version "4.0.0"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+if (!JavaVersion.current().java8Compatible) {
+    throw new IllegalStateException('Must be built with Java 8 or higher')
+}
+
+dependencies {
+    compile "org.apache.commons:commons-lang3:${commonsLangVersion}"
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    compile "org.ajoberstar:gradle-git:${gradleGitVersion}"
+    compile "com.netflix.nebula:gradle-ospackage-plugin:${nebulaOspackageVersion}"
+    compile "com.netflix.nebula:gradle-extra-configurations-plugin:${nebulaExtraVersion}"
+    compile "com.netflix.nebula:nebula-release-plugin:${nebulaReleaseVersion}"
+    compile "org.jfrog.buildinfo:build-info-extractor-gradle:${jfrogArtifactoryVersion}"
+
+    // Spock Unit Testing
+    testCompile "org.spockframework:spock-core:${spockVersion}"
+
+    //gradle testing
+    testCompile gradleTestKit()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url '/srv/maven'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://35.188.144.12//artifactory/cld-plugins-release-local/") {
+                authentication(userName: "${artifactoryUser}", password: "${artifactoryPassword}")
+            }
+        }
+    }
+}
