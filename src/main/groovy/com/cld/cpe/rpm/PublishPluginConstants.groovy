@@ -1,4 +1,4 @@
-package com.devops.cpe.rpm
+package com.cld.cpe.rpm
 
 import groovy.transform.ToString
 

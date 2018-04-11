@@ -34,7 +34,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.cld.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 
@@ -87,7 +87,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.cld.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 
@@ -115,7 +115,7 @@ buildscript {
     maven { url 'http://35.188.144.12//artifactory/cld-plugins-release-local/' }
   }
   dependencies {
-    classpath "com.devops.cpe:cpe-rpm-plugins:0.0.3"
+    classpath "com.cld.cpe:cpe-rpm-plugins:0.0.3"
   }
 }
 

@@ -1,6 +1,6 @@
-package com.devops.cpe.rpm.plugin
+package com.cld.cpe.rpm.plugin
 
-import com.devops.cpe.rpm.extension.VersionConfigExtension
+import com.cld.cpe.rpm.extension.VersionConfigExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.IConventionAware
