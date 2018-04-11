@@ -1,7 +1,7 @@
-package com.tgt.cpe.rpm.plugin
+package com.devops.cpe.rpm.plugin
 
-import com.tgt.cpe.rpm.extension.DownloadSourceExtension
-import com.tgt.cpe.rpm.tasks.DownloadSourceTask
+import com.devops.cpe.rpm.extension.DownloadSourceExtension
+import com.devops.cpe.rpm.tasks.DownloadSourceTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

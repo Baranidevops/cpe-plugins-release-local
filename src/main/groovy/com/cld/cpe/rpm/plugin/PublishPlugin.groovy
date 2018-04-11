@@ -1,7 +1,7 @@
-package com.tgt.cpe.rpm.plugin
+package com.devops.cpe.rpm.plugin
 
-import com.tgt.cpe.rpm.PublishPluginConstants
-import com.tgt.cpe.rpm.extension.PublishExtension
+import com.devops.cpe.rpm.PublishPluginConstants
+import com.devops.cpe.rpm.extension.PublishExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.IConventionAware

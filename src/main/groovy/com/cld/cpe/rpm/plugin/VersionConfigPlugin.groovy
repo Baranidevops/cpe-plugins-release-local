@@ -1,6 +1,6 @@
-package com.tgt.cpe.rpm.plugin
+package com.devops.cpe.rpm.plugin
 
-import com.tgt.cpe.rpm.extension.VersionConfigExtension
+import com.devops.cpe.rpm.extension.VersionConfigExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.IConventionAware
@@ -9,18 +9,18 @@ import org.gradle.api.logging.Logging
 import java.util.regex.Pattern
 
 /**
- * Version Configuration Plugin to maintain tgt-<rpm-name>-<version>-<release>.<arch>.rpm naming standard.
+ * Version Configuration Plugin to maintain cld-<rpm-name>-<version>-<release>.<arch>.rpm naming standard.
  */
 class VersionConfigPlugin implements Plugin<Project> {
 
     private static Logger logger = Logging.getLogger(VersionConfigPlugin)
 
     VersionConfigExtension extension
-    Pattern tgtPrefixRegex = ~/^tgt-/
+    Pattern cldPrefixRegex = ~/^cld-/
     Pattern rpmVersionRegex = ~/^\d+\.\d+\.\d+/
 
     static final String CONFIG_NAME = 'versionConfig'
-    static final String RPM_PREFIX = 'tgt-'
+    static final String RPM_PREFIX = 'cld-'
     static final String DEFAULT_RELEASE = '1'
     static final String SNAPSHOT = 'snapshot'
 
@@ -32,9 +32,9 @@ class VersionConfigPlugin implements Plugin<Project> {
 
         extension = this.project.extensions.create(CONFIG_NAME, VersionConfigExtension)
 
-        //Enforce rule that name must be prefixed with 'tgt-'
+        //Enforce rule that name must be prefixed with 'cld-'
         ((IConventionAware) extension).conventionMapping.map('rpmName') {
-            this.project.name.toString() =~ tgtPrefixRegex ? this.project.name.toString() : RPM_PREFIX + this.project.name.toString()
+            this.project.name.toString() =~ cldPrefixRegex ? this.project.name.toString() : RPM_PREFIX + this.project.name.toString()
         }
 
         //Enforce rule that rpmVersion is only the semantic <major>.<minor>.<patch>

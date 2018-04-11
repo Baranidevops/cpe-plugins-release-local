@@ -1,9 +1,9 @@
 ## RPM gradle plugin
-see [this issue](https://git.target.com/cpe/consolidateplatform/issues/63)
+see [this issue](https://git..com/cpe/consolidateplatform/issues/63)
 ----------
 ### Version Configuration Plugin: *cpe.rpm.version-config*
 ##### Purpose
-Enforce [these naming/version conventions](https://git.target.com/cpe/consolidateplatform/issues/32):
+Enforce [these naming/version conventions](https://git..com/cpe/consolidateplatform/issues/32):
 ```
 tgt-<rpmName>-<rpmVersion>-<rpmRelease>.<rpmArch>.rpm
 ```
@@ -102,7 +102,7 @@ repositories {
 ----------
 ### Download Source Plugin: *cpe.rpm.download-source*
 ##### Purpose
-Provide functionality to easily download source files into target directories.
+Provide functionality to easily download source files into  directories.
 
 #### Notes
 - If this plugin is applied, the ```downloadSource``` task will automatically be made a dependency of the ```buildRpm``` task, so that source files are downloaded prior to buulding the rpm.
@@ -127,14 +127,14 @@ repositories {
 
 downloadSourceConfig {
   sourceUrl =
-  targetFile =
+  File =
 }
 ```
 -----
 
 ### Possible Future
 
-- [Jar packaging task](https://git.target.com/cpe/consolidateplatform/issues/76)
+- [Jar packaging task](https://git..com/cpe/consolidateplatform/issues/76)
 - Enforce testing conventions
   - "set up" task to install RPM and configure before testing
   - "test" task that will enable more flexibility with how people choose to test the RPM but will be a common convention that Jenkins can use to run the tests
